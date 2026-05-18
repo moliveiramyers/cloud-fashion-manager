@@ -1,0 +1,1 @@
+# cloud-fashion-manager
