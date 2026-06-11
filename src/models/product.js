@@ -53,7 +53,6 @@ const updateProduct = async (id, data) => {
     return await productsRef.doc(id).update(data);
 };
 
-//
 // DELETE
 //
 const deleteProduct = async (id) => {

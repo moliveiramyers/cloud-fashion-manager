@@ -1,0 +1,84 @@
+<%- include('../partials/header') %>
+
+<main class="collection-page">
+
+    <!-- HEADER -->
+    <div class="collection-header">
+
+        <h1><%= collection.name %></h1>
+
+        <div class="collection-actions">
+
+            <a href="/products/collections/edit/<%= collection.id %>" class="btn-edit">
+                Edit
+            </a>
+
+            <button class="btn-delete" onclick="openDeleteModal()">
+                Delete
+            </button>
+
+        </div>
+
+    </div>
+
+    
+
+    <!-- SAME GRID AS products/index -->
+    <div class="products-grid collection-products">
+
+        <% products.forEach(product => { %>
+
+            <a href="/products/<%= product.id %>" class="product-card">
+
+                <!-- IMAGE -->
+                <div class="product-image">
+                    <img src="<%= product.imageUrl || 'https://via.placeholder.com/300' %>"
+                         alt="<%= product.name %>">
+                </div>
+
+                <!-- INFO -->
+                <div class="product-info">
+
+                    <h2><%= product.name %></h2>
+
+                    <p class="price">€<%= product.price %></p>
+
+                    <% if (product.discount && product.discount > 0) { %>
+                        <p class="discount">
+                            -<%= product.discount %>% OFF
+                        </p>
+                    <% } %>
+
+                    <p class="collection">
+                        <%= product.collection || 'No collection' %>
+                    </p>
+
+                </div>
+
+            </a>
+
+        <% }) %>
+
+    </div>
+
+</main>
+
+<!-- DELETE MODAL -->
+<div id="deleteModal" class="modal hidden">
+    <div class="modal-box">
+
+        <h2>Delete Collection?</h2>
+
+        <p>
+            This will delete <strong><%= products.length %></strong> products too.
+        </p>
+
+        <form action="/products/collections/delete/<%= collection.id %>" method="POST">
+            <button type="submit" class="btn-danger">Yes, delete</button>
+            <button type="button" onclick="closeDeleteModal()">Cancel</button>
+        </form>
+
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

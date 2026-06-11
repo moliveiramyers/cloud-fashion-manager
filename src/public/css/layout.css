@@ -320,3 +320,85 @@
     color: #666;
     margin: 0;
 }
+
+.products-container,
+.collection-page,
+.product-page {
+    padding-top: 90px;
+}
+
+.collection-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.collection-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1100px;
+    margin: 0 auto 20px auto;
+
+    padding: 0 20px;
+}
+
+.collection-products {
+}
+
+.collection-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.collection-header h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 8px 14px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-edit {
+    background: black;
+    color: white;
+}
+
+.btn-delete {
+    background: #b00020;
+    color: white;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    background: white;
+    padding: 30px;
+    width: 400px;
+}
+
+.hidden {
+    display: none;
+}

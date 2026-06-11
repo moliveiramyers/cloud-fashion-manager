@@ -45,4 +45,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // run once on load (important for edit page)
         updatePreview();
     }
+
+
+    // COLLECTION DELETE MODAL
+    window.openDeleteModal = () => {
+        const modal = document.getElementById("deleteModal");
+        if (modal) modal.classList.remove("hidden");
+    };
+
+    window.closeDeleteModal = () => {
+        const modal = document.getElementById("deleteModal");
+        if (modal) modal.classList.add("hidden");
+    };
 });

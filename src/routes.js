@@ -1,4 +1,5 @@
 import express from "express";
+
 import {
     listProducts,
     createProduct,
@@ -6,12 +7,19 @@ import {
     editProduct,
     removeProduct,
     showCreateForm,
-    showCollection,
-    showCollections,
     showEditForm
 } from "./controllers/product.js";
-import { showAdminPage } from "./controllers/admin.js";
-import { showCreateCollectionForm, createCollection, showEditCollectionForm, editCollection, removeCollection } from "./controllers/collection.js";
+
+import {
+    showAdminPage,
+    showCreateCollectionForm,
+    createCollection,
+    showEditCollectionForm,
+    editCollection,
+    removeCollection,
+    showCollection,
+    showCollections
+} from "./controllers/collection.js";
 
 const router = express.Router();
 

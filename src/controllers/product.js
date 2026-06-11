@@ -99,35 +99,9 @@ const removeProduct = async (req, res, next) => {
 
 };
 
-const showCollection = async (req, res, next) => {
-    try {
-        console.log("Collection:", req.params.collection);
-        const collection = req.params.collection;
-        const products = await getProductsByCollection(collection);
-
-
-        console.log("Collection:", collection);
-        console.log("Products found:", products.length);
-        console.log(products);
-
-        res.render('products/index', {
-            products, collection
-        });
-    } catch (error) {
-        next(error);
-    }
-}
-
-const showCollections = async (req, res, next) => {
-    try {
-        const collections = await getAllCollections();
-        res.render("collections/index", { collections });
-        res.render('collections/index', { collections })
-    } catch (error) {
-        next(error);
-    }
-};
 
 
 
-export { createProduct, listProducts, updateProduct, showProduct, editProduct, removeProduct, showCreateForm, showCollection, showCollections, showEditForm }
+
+
+export { createProduct, listProducts, updateProduct, showProduct, editProduct, removeProduct, showCreateForm, showEditForm }
