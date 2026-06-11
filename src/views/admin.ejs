@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<main class="admin-page">
+
+    <div class="admin-container">
+
+        <h1>Admin Dashboard</h1>
+
+        <div class="admin-grid">
+
+            <a
+                href="/products/create"
+                class="admin-card"
+            >
+                <h2>Add Product</h2>
+                <p>Create a new product.</p>
+            </a>
+
+            <a
+                href="/products/collections/create"
+                class="admin-card"
+            >
+                <h2>Add Collection</h2>
+                <p>Create a new collection.</p>
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+    <main class="product-page">
+
+        <div class="product-detail">
+
+            <div class="product-image">
+                <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+            </div>
+
+            <div class="product-info">
+
+                <h1>
+                    <%= product.name %>
+                </h1>
+
+                <p class="price">€ <%= product.price %>
+                </p>
+
+                <p class="meta">Collection: <%= product.collection %>
+                </p>
+
+                <p class="meta">Size: <%= product.size %>
+                </p>
+
+                <div class="product-actions">
+
+                    <a href="/products/edit/<%= product.id %>" class="btn-edit">
+                        Edit
+                    </a>
+
+                    <form action="/products/delete/<%= product.id %>" method="POST"
+                        onsubmit="return confirm('Delete this product?')">
+                        <button type="submit" class="btn-delete">
+                            Delete
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <%- include('../partials/footer') %>

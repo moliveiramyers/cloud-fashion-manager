@@ -6,6 +6,15 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+
+# Firebase credentials
+firebase/serviceAccountKey.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

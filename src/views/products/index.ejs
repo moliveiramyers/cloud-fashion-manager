@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+
+    <main class="products-container">
+
+
+        <h1>Products</h1>
+        <!-- <a href="/products/create" class="btn-add-product">
+            + Add Product
+        </a> -->
+
+
+
+        <div class="products-grid">
+
+            <% products.forEach(product=> { %>
+                <a href="/products/<%= product.id %>" class="product-card">
+                    <div class="product-card">
+
+                        <!-- IMAGE -->
+                        <div class="product-image">
+                            <img src="<%= product.imageUrl || 'https://via.placeholder.com/300' %>"
+                                alt="<%= product.name %>">
+                        </div>
+
+                        <!-- INFO -->
+                        <div class="product-info">
+
+                            <h2>
+                                <%= product.name %>
+                            </h2>
+
+                            <p class="price">
+                                €<%= product.price %>
+                            </p>
+
+                            <% if (product.discount && product.discount> 0) { %>
+                                <p class="discount">
+                                    -<%= product.discount %>% OFF
+                                </p>
+                                <% } %>
+
+                                    <p class="collection">
+                                        <%= product.collection || 'No collection' %>
+                                    </p>
+                                    
+
+                        </div>
+
+                    </div>
+                </a>
+
+                <% }) %>
+
+        </div>
+
+    </main>
+
+    <%- include('../partials/footer') %>

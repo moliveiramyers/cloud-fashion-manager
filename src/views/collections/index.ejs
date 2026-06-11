@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<main class="collections-page">
+
+    <h1>Collections</h1>
+
+    <div class="collections-grid">
+
+        <% collections.forEach(collection => { %>
+
+            <a 
+                href="/products/collections/<%= encodeURIComponent(collection.name) %>"
+                class="collection-card"
+            >
+
+                <h2><%= collection.name %></h2>
+
+            </a>
+
+        <% }) %>
+
+    </div>
+
+</main>
+
+<%- include('../partials/footer') %>
