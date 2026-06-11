@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -5,7 +7,6 @@ import path from 'path';
 // import testFirestore from './src/models/testModel.js';
 
 import productRoutes from "./src/routes.js";
-
 
 // App
 const app = express();
