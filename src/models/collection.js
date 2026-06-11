@@ -1,5 +1,4 @@
 import db from "../firebase/firebaseConfig.js";
-import { updateProduct } from "./product.js";
 
 const collectionsRef = db.collection("collections");
 const productsRef = db.collection("products");
@@ -14,6 +13,7 @@ const getProductsByCollection = async (collection) => {
         ...doc.data()
     }));
 };
+
 const getAllCollections = async () => {
     const snapshot = await collectionsRef.get();
     return snapshot.docs.map(doc => ({
@@ -21,6 +21,7 @@ const getAllCollections = async () => {
         ...doc.data()
     }));
 };
+
 const addCollection = async (data) => {
     return await collectionsRef.add({
         name: data.name,
@@ -29,29 +30,39 @@ const addCollection = async (data) => {
     });
 };
 
- const updateCollection = async (id, data) => {
-    // 1. Get old collection data
-    const doc = await collectionsRef.doc(id).get();
-    const oldName = doc.data().name;
+const updateCollection = async (id, data) => {
+    const collectionRef = collectionsRef.doc(id);
+    const collectionDoc = await collectionRef.get();
 
-    const newName = data.name;
-
-    // 2. Update collection itself
-    await collectionsRef.doc(id).update({
-        name: newName
-    });
-
-    // 3. If name changed → update products
-    if (oldName !== newName) {
-        const products = await getProductsByCollection(oldName);
-
-        for (const product of products) {
-            await updateProduct(product.id, {
-                collection: newName
-            });
-        }
+    if (!collectionDoc.exists) {
+        const error = new Error("Collection not found");
+        error.status = 404;
+        throw error;
     }
 
+    const oldName = collectionDoc.data().name;
+    const newName = data.name;
+    const description = data.description || "";
+
+    const batch = db.batch();
+    batch.update(collectionRef, {
+        name: newName,
+        description
+    });
+
+    if (oldName !== newName) {
+        const productsSnapshot = await productsRef
+            .where("collection", "==", oldName)
+            .get();
+
+        productsSnapshot.docs.forEach((productDoc) => {
+            batch.update(productDoc.ref, {
+                collection: newName
+            });
+        });
+    }
+
+    await batch.commit();
     return true;
 };
 
