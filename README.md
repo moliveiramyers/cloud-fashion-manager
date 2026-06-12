@@ -65,7 +65,7 @@ Products are linked to collections through the collection field, which stores th
 * https://expressjs.com
 * https://ejs.co
 * https://cloud-fashion-manager.onrender.com
-* https://stackoverflow.com
+* https://github.com/moliveiramyers/cloud-fashion-manager
 * https://developer.mozilla.org
 
 # Future Work
